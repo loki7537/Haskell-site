@@ -3,7 +3,7 @@
 {-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE TypeFamilies #-}
-module Handler.Home where
+module Handler.Perechetka where
 
 import Import
 
@@ -19,7 +19,9 @@ data FileForm = FileForm
 --
 -- Большая часть кода, который вы будете писать в Yesod, находится в этих обработчиках.
 -- функции. Вы можете распределить их по нескольким файлам, если хотите, или создать один монолитный файл.
-getHomeR :: Handler Html
-getHomeR = defaultLayout $ do
+getPerechetkaR :: Handler Html
+getPerechetkaR = defaultLayout $ do
         setTitle "Дендрологи" --надпись вкладки браузера
-        $(widgetFile "homepage") -- все файлы Шекспира с этим именем
+        $(widgetFile "perechetka") -- все файлы Шекспира с этим именем 
+
+

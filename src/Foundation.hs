@@ -109,7 +109,7 @@ instance Yesod App where
         -- Get the breadcrumbs, as defined in the YesodBreadcrumbs instance.
         (title, parents) <- breadcrumbs
 
-        -- Define the menu items of the header.
+        --Определите пункты меню заголовка.
         let menuItems =
                 [ NavbarLeft $ MenuItem
                     { menuItemLabel = "Home"
@@ -150,33 +150,33 @@ instance Yesod App where
                                     -- ^ generated from @Settings/StaticFiles.hs@
             $(widgetFile "default-layout")
         withUrlRenderer $(hamletFile "templates/default-layout-wrapper.hamlet")
-
-    -- The page to be redirected to when authentication is required.
+-- Страница, на которую следует перенаправить при необходимости аутентификации.
     authRoute
         :: App
         -> Maybe (Route App)
     authRoute _ = Just $ AuthR LoginR
 
     isAuthorized
-        :: Route App  -- ^ The route the user is visiting.
-        -> Bool       -- ^ Whether or not this is a "write" request.
+        :: Route App  -- ^ Маршрут, который посещает пользователь.
+        -> Bool       -- ^ Является ли это запросом на запись.
         -> Handler AuthResult
-    -- Routes not requiring authentication.
+    -- Маршруты, не требующие аутентификации.
     isAuthorized (AuthR _) _ = return Authorized
     isAuthorized CommentR _ = return Authorized
     isAuthorized HomeR _ = return Authorized
     isAuthorized FaviconR _ = return Authorized
     isAuthorized RobotsR _ = return Authorized
     isAuthorized (StaticR _) _ = return Authorized
+    -- мой маршрут
+    isAuthorized PerechetkaR _ = return Authorized
 
-    -- the profile route requires that the user is authenticated, so we
-    -- delegate to that function
+     -- маршрут профиля требует аутентификации пользователя, поэтому мы
+     -- делегировать этой функции
     isAuthorized ProfileR _ = isAuthenticated
-
-    -- This function creates static content files in the static folder
-    -- and names them based on a hash of their content. This allows
-    -- expiration dates to be set far in the future without worry of
-    -- users receiving stale content.
+     -- Эта функция создает файлы статического содержимого в статической папке
+     -- и называет их на основе хеша их содержимого. Это позволяет
+     -- сроки годности должны быть установлены в далеком будущем, не беспокоясь о
+     -- пользователи, получающие устаревший контент.
     addStaticContent
         :: Text  -- ^ The file extension
         -> Text -- ^ The MIME content type
@@ -211,18 +211,18 @@ instance Yesod App where
 
 -- Define breadcrumbs.
 instance YesodBreadcrumbs App where
-    -- Takes the route that the user is currently on, and returns a tuple
-    -- of the 'Text' that you want the label to display, and a previous
-    -- breadcrumb route.
+     -- Берет маршрут, по которому в данный момент находится пользователь, и возвращает кортеж
+     -- "Текст", который вы хотите отобразить на метке, и предыдущий
+     -- маршрут хлебных крошек.
     breadcrumb
-        :: Route App  -- ^ The route the user is visiting currently.
+        :: Route App  -- ^ Маршрут, который пользователь посещает в данный момент.
         -> Handler (Text, Maybe (Route App))
     breadcrumb HomeR = return ("Home", Nothing)
     breadcrumb (AuthR _) = return ("Login", Just HomeR)
     breadcrumb ProfileR = return ("Profile", Just HomeR)
     breadcrumb  _ = return ("home", Nothing)
 
--- How to run database actions.
+-- Как запускать действия с базой данных.
 instance YesodPersist App where
     type YesodPersistBackend App = SqlBackend
     runDB :: SqlPersistT Handler a -> Handler a
@@ -237,13 +237,13 @@ instance YesodPersistRunner App where
 instance YesodAuth App where
     type AuthId App = UserId
 
-    -- Where to send a user after successful login
+    -- Куда отправить пользователя после успешного входа
     loginDest :: App -> Route App
     loginDest _ = HomeR
-    -- Where to send a user after logout
+    -- Куда отправить пользователя после выхода
     logoutDest :: App -> Route App
     logoutDest _ = HomeR
-    -- Override the above two destinations when a Referer: header is present
+    -- Переопределить два вышеуказанных адресата, если присутствует заголовок Referer:
     redirectToReferer :: App -> Bool
     redirectToReferer _ = True
 
@@ -258,13 +258,13 @@ instance YesodAuth App where
                 , userPassword = Nothing
                 }
 
-    -- You can add other plugins like Google Email, email or OAuth here
+    -- Вы можете добавить другие плагины, такие как электронная почта Google, электронная почта или OAuth
     authPlugins :: App -> [AuthPlugin App]
     authPlugins app = [authOpenId Claimed []] ++ extraAuthPlugins
         -- Enable authDummy login if enabled.
         where extraAuthPlugins = [authDummy | appAuthDummyLogin $ appSettings app]
 
--- | Access function to determine if a user is logged in.
+-- |Функция доступа, чтобы определить, вошел ли пользователь в систему
 isAuthenticated :: Handler AuthResult
 isAuthenticated = do
     muid <- maybeAuthId
@@ -274,15 +274,16 @@ isAuthenticated = do
 
 instance YesodAuthPersist App
 
--- This instance is required to use forms. You can modify renderMessage to
--- achieve customized and internationalized form validation messages.
+-- Этот экземпляр необходим для использования форм. 
+-- Вы можете изменить renderMessage для получения настраиваемых
+-- и интернационализированных сообщений проверки формы
 instance RenderMessage App FormMessage where
     renderMessage :: App -> [Lang] -> FormMessage -> Text
     renderMessage _ _ = defaultFormMessage
 
--- Useful when writing code that is re-usable outside of the Handler context.
--- An example is background jobs that send email.
--- This can also be useful for writing code that works across multiple Yesod applications.
+--Полезно при написании кода, который можно повторно использовать вне контекста обработчика.
+--Примером являются фоновые задания, отправляющие электронную почту.
+--Это также может быть полезно для написания кода, который работает в нескольких приложениях Yesod.
 instance HasHttpManager App where
     getHttpManager :: App -> Manager
     getHttpManager = appHttpManager

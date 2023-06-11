@@ -4,7 +4,7 @@
             <div class="text-center text-lg-start py-3 py-lg-1">
                 <h2 class="fw-bold mb-2">
                    <strong>Загрузите файл с перечеткой
-                   <a href="#">Подробнее о проверяемых ошибках
+                <a href="#">Подробнее о проверяемых ошибках
             <form class="d-flex justify-content-center flex-wrap my-2" method="post">
                 <div class="my-2"><input class="form-control" type="file">
                 <div class="my-2"><button class="btn btn-primary ms-sm-2" type="submit">Проверить

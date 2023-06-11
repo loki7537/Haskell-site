@@ -5,12 +5,10 @@ module Settings.StaticFiles where
 
 import Settings     (appStaticDir, compileTimeAppSettings)
 import Yesod.Static (staticFiles)
-
--- This generates easy references to files in the static directory at compile time,
--- giving you compile-time verification that referenced files exist.
--- Warning: any files added to your static directory during run-time can't be
--- accessed this way. You'll have to use their FilePath or URL to access them.
---
+-- Это создает простые ссылки на файлы в статическом каталоге во время компиляции,
+-- давая вам проверку времени компиляции, что файлы, на которые ссылаются, существуют.
+-- Предупреждение: любые файлы, добавленные в ваш статический каталог во время выполнения, не могут быть
+-- доступ таким образом. Вам нужно будет использовать их FilePath или URL-адрес для доступа к ним.
 -- For example, to refer to @static/js/script.js@ via an identifier, you'd use:
 --
 --     js_script_js
