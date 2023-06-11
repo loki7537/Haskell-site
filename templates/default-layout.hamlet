@@ -1,24 +1,13 @@
-
 <!-- Static navbar -->
-<nav .navbar.navbar-default.navbar-static-top>
-    <div .container>
-        <div .navbar-header>
-            <button type="button" .navbar-toggle.collapsed data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation
-                <span class="icon-bar">
-                <span class="icon-bar">
-                <span class="icon-bar">
+<nav class="navbar navbar-dark navbar-expand bg-primary">
+    <div class="container"><a class="navbar-brand" href="#">Brand</a>
+        <div class="collapse navbar-collapse justify-content-xl-end">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#">Домой</a>
+                <li class="nav-item"><a class="nav-link" href="#">Перечетка</a>
+                <li class="nav-item"><a class="nav-link" href="#">Определитель</a>
+                <li class="nav-item"><a class="nav-link active link-primary" href="#">Вход</a>
 
-        <div #navbar .collapse.navbar-collapse>
-            <ul .nav.navbar-nav>
-                $forall MenuItem label route _ <- navbarLeftFilteredMenuItems
-                    <li :Just route == mcurrentRoute:.active>
-                        <a href="@{route}">#{label}
-
-            <ul .nav.navbar-nav.navbar-right>
-                $forall MenuItem label route _ <- navbarRightFilteredMenuItems
-                    <li :Just route == mcurrentRoute:.active>
-                        <a href="@{route}">#{label}
 
 <!-- Page Contents -->
 
@@ -44,7 +33,10 @@ $else
                 ^{widget}
 
 <!-- Footer -->
-<footer .footer>
-    <div .container>
-        <p .text-muted>
-            #{appCopyright $ appSettings master}
+<footer class="text-center bg-primary">
+        <div class="container text-white py-4 py-lg-5">
+            <ul class="list-inline">
+                <li class="list-inline-item me-4"><a class="link-light" href="#">Web design</a></li>
+                <li class="list-inline-item me-4"><a class="link-light" href="#">Development</a></li>
+                <li class="list-inline-item"><a class="link-light" href="#">Hosting</a></li>
+
