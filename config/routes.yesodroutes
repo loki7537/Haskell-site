@@ -10,7 +10,7 @@
 / HomeR GET
 
 /perechetka PerechetkaR GET 
-
+/myeror MyerorR GET
 /comments CommentR POST
 
 /profile ProfileR GET

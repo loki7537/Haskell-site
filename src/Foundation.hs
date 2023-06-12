@@ -169,6 +169,7 @@ instance Yesod App where
     isAuthorized (StaticR _) _ = return Authorized
     -- мой маршрут
     isAuthorized PerechetkaR _ = return Authorized
+    isAuthorized MyerorR _ = return Authorized
 
      -- маршрут профиля требует аутентификации пользователя, поэтому мы
      -- делегировать этой функции
