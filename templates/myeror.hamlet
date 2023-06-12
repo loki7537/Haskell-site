@@ -1,7 +1,7 @@
   <div class="container">
        <div class="bg-light border rounded text-center text-lg-start py-3 py-lg-1">
           <h2 class="fw-bold mb-2">
-             Программа обрабатывает следующие ошибки в перечетке:
+             Программа находит следующие ошибки в перечетке:
           <ul>
              <li> отсутствие обязательных полей для заполнения;
              <li> наличие диаметра у кустов;
