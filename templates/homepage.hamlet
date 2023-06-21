@@ -1,32 +1,57 @@
   <div class="container" style="min-height: 0;margin-top: 47px;">
-        <div class="row" style="margin-left: -12px;margin-bottom: 53px;">
-            <div class="col-7" style="overflow: clip;transform: skew(0deg);border-radius: 11px;"><img class="img-fluid" src="/static/img/z.jpg" width="900" height="400" style="border-radius: 8px;">
-            <div class="col-5 align-self-center" style="border-radius: 11px;padding-left: 34px;">
-                <h1>Порядок работы</h1>
-                <p> Сайт предназначен облегчить работу дендрологов.&nbsp;
+        <div .row2>
+            <div .col-7>
+                <img .img-fluid src="/static/img/z.jpg">
+            <div .col-5.align-self-center>
+                <h1>
+                   Порядок работы
+                <p>
+                   Сайт предназначен облегчить работу дендрологов.&nbsp;
                     <br>
-                       This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!dtdfudyidtyityu
-                <button class="btn btn-primary" type="button">Подробнее
-        <div class="card bg-secondary" style="margin-top: 48px;margin-bottom: 48px;padding-top: 24px;padding-bottom: 24px;">
-            <div class="card-body text-center text-bg-secondary">
-                <p class="card-text" style="margin-bottom: 0px;">Лес сам себя не вырубит&nbsp;
-        <div class="row" style="margin-left: -24px;margin-right: -24px;">
-            <div class="col" style="padding-right: 24px;padding-left: 24px;margin-bottom: 48px;">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Title
-                        <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.
-                    <div class="card-footer"><button class="btn btn-primary" type="button">Перечетка
-            <div class="col" style="padding-right: 24px;padding-left: 24px;margin-bottom: 48px;">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Title
-                        <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.
-                    <div class="card-footer"><button class="btn btn-primary" type="button">Определить
-            <div class="col" style="padding-right: 24px;padding-left: 24px;margin-bottom: 48px;">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Title
-                        <p class="card-text"> ghlkkhvj;g;jk;hjk;jk;nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.
-                    <div class="card-footer"><button class="btn btn-primary" type="button">Поболтать
+                       This is a template that is great for small businesses.
+                       It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components.
+                       Feel free to use this template for any project you want!dtdfudyidtyityu
+                <button .btn.btn-primary type="button">
+                     Подробнее
+        <div .card.bg-secondary>
+            <div .card-body.text-center.text-bg-secondary>
+                <p .card-text>
+                   Лес сам себя не вырубит&nbsp;
+        <div .row1>
+            <div .col-mi>
+                <div .card>
+                    <div .card-body>
+                        <h2 .card-title>
+                            Title
+                        <p .card-text>
+                            Nullam id dolor id nibh ultricies vehicula ut id elit.
+                            Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+                            Donec id elit non mi porta gravida at eget metus.
+                    <div .card-footer>
+                       <button .btn.btn-primary type="button">
+                            Перечетка
+            <div .col-mi>
+                <div .card>
+                    <div .card-body>
+                        <h2 .card-title>
+                            Title
+                        <p .card-text>
+                            Nullam id dolor id nibh ultricies vehicula ut id elit.
+                            Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+                            Donec id elit non mi porta gravida at eget metus.
+                    <div .card-footer>
+                       <button .btn.btn-primary type="button">
+                            Определить
+            <div .col-mi>
+                <div .card>
+                    <div .card-body>
+                        <h2 .card-title>
+                            Title
+                        <p .card-text>
+                            ghlkkhvj;g;jk;hjk;jk;nibh ultricies vehicula ut id elit.
+                            Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+                            Donec id elit non mi porta gravida at eget metus.
+                    <div .card-footer>
+                       <button .btn.btn-primary type="button">
+                            Поболтать
 
