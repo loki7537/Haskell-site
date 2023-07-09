@@ -1,0 +1,122 @@
+function modifyText() {
+    var reader = new FileReader();
+    
+    np = document.getElementById('my_input');
+    reader.onload = function() {
+        var raw_data;
+        var arrayBuffer = this.result,
+            array = new Uint8Array(arrayBuffer),
+            binaryString = String.fromCharCode.apply(null, array);
+            
+        /* Call XLSX */
+        var workbook = XLSX.read(binaryString, {
+            type: "binary"
+        });
+
+        /* DO SOMETHING WITH workbook HERE */
+        var first_sheet_name = workbook.SheetNames[0];
+        /* Get worksheet */
+        var worksheet = workbook.Sheets[first_sheet_name];
+        // вывод в массив
+        raw_data = XLSX.utils.sheet_to_json(worksheet, {header: 1});
+        if(verification_worksheet(raw_data))
+        {
+            extraction_data(raw_data);
+        }
+
+        append_Table(raw_data);
+   
+    }
+    reader.readAsArrayBuffer(np.files[0]);
+        
+}
+
+//===========================================//
+//  проверяет что файл является перечеткой   //
+//===========================================//
+function verification_worksheet (wrch)
+{
+    if (wrch[0][12] === "формат")
+    {
+        return true;
+    }
+      else
+      {
+        return false;
+      }
+
+}
+
+//======================================//
+//   удаляет лишние строки из массива   //
+//======================================//
+function extraction_data (arrays)
+{
+    
+    for (let i = arrays.length - 1; i >= 0; --i) 
+    {  
+        if (arrays[i][1]=='Итого:')
+        {
+            arrays.splice(i);//удаляет все строки начиная со строки с "итого"
+        }
+        else if (i<7 || 
+            (arrays[i][0]==undefined 
+            && arrays[i][1]==undefined
+            && arrays[i][2]==undefined
+            && arrays[i][3]==undefined
+            && arrays[i][4]==undefined
+            && arrays[i][6]==undefined
+            && arrays[i][7]==undefined
+            && arrays[i][8]==undefined
+            && arrays[i][10]==undefined))//удаляет первые семь строчек или пустые строки
+        
+        {
+            arrays.splice(i, 1);
+        }
+     
+        //arrays[i].splice(11); //удалит столбцы с 11 и до конца
+    }
+    
+}
+
+
+//==================================//
+//     создает таблицу из массива   //
+//==================================//
+function arraysToTable(arrays, id) {
+    const table = document.createElement('table');
+    table.id = id;
+    //table.setAttribute('border', '1');
+    
+    for (const row of arrays) {
+      const tr = table.insertRow();
+      for (const number of row) {
+        const td = tr.insertCell();
+        td.textContent = number;
+      }
+    }
+    return table;
+}
+
+//==================================//
+//   добавляет таблицу в документ   //
+//==================================//
+function append_Table(my_array)
+{
+  if (document.getElementById('my_table'))
+     {
+      document.getElementById('my_table').remove();
+     }
+  document.getElementById('my_body').appendChild(arraysToTable(my_array, 'my_table')); 
+
+  //document.body.appendChild(arraysToTable(my_array, 'my_table'));
+}
+
+//выбираем кнопку
+const button=document.getElementById('my_button');
+//вешаем на нажатие кнопки вызов функции
+button.addEventListener('click', modifyText);
+
+
+
+
