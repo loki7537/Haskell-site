@@ -22,9 +22,11 @@ function modifyText() {
         if(verification_worksheet(raw_data))
         {
             extraction_data(raw_data);
+            append_Table(raw_data);
+
         }
 
-        append_Table(raw_data);
+       // append_Table(raw_data);
    
     }
     reader.readAsArrayBuffer(np.files[0]);
@@ -86,7 +88,7 @@ function extraction_data (arrays)
 function arraysToTable(arrays, id) {
     const table = document.createElement('table');
     table.id = id;
-    //table.setAttribute('border', '1');
+    table.className = "table1";
     
     for (const row of arrays) {
       const tr = table.insertRow();
